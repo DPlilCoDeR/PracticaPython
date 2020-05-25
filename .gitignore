@@ -1,2 +1,4 @@
 /venv/
 /gui/__pycache__/
+__pycache__/
+/app/bbdd_practica
