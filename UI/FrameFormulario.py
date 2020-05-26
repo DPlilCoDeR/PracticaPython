@@ -38,26 +38,7 @@ class FrameFormulario(Frame):
         self.entrada_comentarios = Entry(self, textvariable=self.comentarios)
         self.entrada_comentarios.grid(column=2, row=5, columnspan=2)
 
-    def botones_crud(self):
-        self.boton_save = Button(self, text="Save", command=lambda: bbdd.BaseDatos.insertar_a_la_bbdd())
-        self.boton_save.grid(column=1, row=6)
-
-        self.boton_read = Button(self, text="Read", command=lambda: bbdd.BaseDatos.obtener_de_bbdd())
-        self.boton_read.grid(column=2, row=6)
-
-        self.boton_update = Button(self, text="Update", command=lambda: bbdd.BaseDatos.actualizar_bbdd())
-        self.boton_update.grid(column=3, row=6)
-
-        self.boton_delete = Button(self, text="Delete", command=lambda: bbdd.BaseDatos.eliminiar_de_bbdd())
-        self.boton_delete.grid(column=4, row=6)
-
-    def barra_menus(self):
-        self.menuBar = Menu(self)
-        self.filemenu = Menu(self.menuBar, tearoff=0)
-        self.filemenu.add_command(label="Hello!")
-        self.filemenu.add_command(label="Quit!")
-        self.menuBar.add_cascade(label="File")
-
     def __init__(self, master=None):
         super().__init__(master)
+        self.widget_formulario()
         self.pack()
