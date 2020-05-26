@@ -2,7 +2,9 @@
   <dictionary name="doble_papi">
     <words>
       <w>apellido</w>
+      <w>barra</w>
       <w>bbdd</w>
+      <w>botones</w>
       <w>comentarios</w>
       <w>conexion</w>
       <w>datos</w>

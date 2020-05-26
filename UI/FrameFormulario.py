@@ -4,14 +4,15 @@ from tkinter.ttk import *
 import data.Basedatos as bbdd
 
 
-class Gui(Frame):
-    user_id = IntVar()
-    nombre = StringVar()
-    apellido = StringVar()
-    password = StringVar()
-    comentarios = StringVar()
+class FrameFormulario(Frame):
 
-    def widget_formulario(self,):
+    user_id = IntVar
+    nombre = StringVar
+    apellido = StringVar
+    password = StringVar
+    comentarios = StringVar
+
+    def widget_formulario(self):
         self.texto_ID = Label(self, text="ID: ")
         self.texto_ID.grid(column=1, row=1)
         self.entrada_ID = Entry(self, textvariable=self.user_id)
@@ -24,17 +25,17 @@ class Gui(Frame):
 
         self.texto_apellido = Label(self, text="Apellido: ")
         self.texto_apellido.grid(column=1, row=3)
-        self.entrada_apellido = Entry(self, self.apellido)
+        self.entrada_apellido = Entry(self, textvariable=self.apellido)
         self.entrada_apellido.grid(column=2, row=3, columnspan=2)
 
         self.texto_password = Label(self, text="Password: ")
         self.texto_password.grid(column=1, row=4)
-        self.entrada_password = Entry(self, self.password)
+        self.entrada_password = Entry(self, textvariable=self.password)
         self.entrada_password.grid(column=2, row=4, columnspan=2)
 
         self.texto_comentarios = Label(self, text="Comentarios: ")
         self.texto_comentarios.grid(column=1, row=5)
-        self.entrada_comentarios = Entry(self, self.comentarios)
+        self.entrada_comentarios = Entry(self, textvariable=self.comentarios)
         self.entrada_comentarios.grid(column=2, row=5, columnspan=2)
 
     def botones_crud(self):
@@ -51,11 +52,12 @@ class Gui(Frame):
         self.boton_delete.grid(column=4, row=6)
 
     def barra_menus(self):
-        pass
+        self.menuBar = Menu(self)
+        self.filemenu = Menu(self.menuBar, tearoff=0)
+        self.filemenu.add_command(label="Hello!")
+        self.filemenu.add_command(label="Quit!")
+        self.menuBar.add_cascade(label="File")
 
     def __init__(self, master=None):
         super().__init__(master)
         self.pack()
-        self.widget_formulario()
-        self.botones_crud()
-        self.barra_menus()
