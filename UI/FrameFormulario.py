@@ -1,16 +1,18 @@
 from tkinter import *
 from tkinter.ttk import *
 
-import data.Basedatos as bbdd
-
 
 class FrameFormulario(Frame):
 
-    user_id = IntVar
-    nombre = StringVar
-    apellido = StringVar
-    password = StringVar
-    comentarios = StringVar
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.user_id = IntVar()
+        self.nombre = StringVar()
+        self.apellido = StringVar()
+        self.password = StringVar()
+        self.comentarios = StringVar()
+        self.widget_formulario()
+        self.pack()
 
     def widget_formulario(self):
         self.texto_ID = Label(self, text="ID: ")
@@ -37,8 +39,3 @@ class FrameFormulario(Frame):
         self.texto_comentarios.grid(column=1, row=5)
         self.entrada_comentarios = Entry(self, textvariable=self.comentarios)
         self.entrada_comentarios.grid(column=2, row=5, columnspan=2)
-
-    def __init__(self, master=None):
-        super().__init__(master)
-        self.widget_formulario()
-        self.pack()
