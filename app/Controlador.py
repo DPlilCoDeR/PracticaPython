@@ -11,7 +11,7 @@ class Controlador(BaseDatos):
         print(nombre)
         return
 
-    def read(self,user_id):
+    def read(self, user_id):
         self.query("""SELECT * FROM DATOS_USUARIO WHERE USER_ID=?""", user_id)
 
     def update_bbdd(self, nombre, apellido, password, comentarios, user_id):
