@@ -16,26 +16,32 @@ class FrameFormulario(Frame):
 
     def widget_formulario(self):
         self.texto_ID = Label(self, text="ID: ")
-        self.texto_ID.grid(column=1, row=1)
+        self.texto_ID.grid(column=0, row=1)
         self.entrada_ID = Entry(self, textvariable=self.user_id)
-        self.entrada_ID.grid(column=2, row=1, columnspan=2)
+        self.entrada_ID.grid(column=1, row=1, columnspan=2)
 
         self.texto_nombre = Label(self, text="Nombre: ")
-        self.texto_nombre.grid(column=1, row=2)
+        self.texto_nombre.grid(column=0, row=2)
         self.entrada_nombre = Entry(self, textvariable=self.nombre)
-        self.entrada_nombre.grid(column=2, row=2, columnspan=2)
+        self.entrada_nombre.grid(column=1, row=2, columnspan=2)
 
         self.texto_apellido = Label(self, text="Apellido: ")
-        self.texto_apellido.grid(column=1, row=3)
+        self.texto_apellido.grid(column=0, row=3)
         self.entrada_apellido = Entry(self, textvariable=self.apellido)
-        self.entrada_apellido.grid(column=2, row=3, columnspan=2)
+        self.entrada_apellido.grid(column=1, row=3, columnspan=2)
 
         self.texto_password = Label(self, text="Password: ")
-        self.texto_password.grid(column=1, row=4)
+        self.texto_password.grid(column=0, row=4)
         self.entrada_password = Entry(self, textvariable=self.password)
-        self.entrada_password.grid(column=2, row=4, columnspan=2)
+        self.entrada_password.config(show="*")
+        self.entrada_password.grid(column=1, row=4, columnspan=2)
 
         self.texto_comentarios = Label(self, text="Comentarios: ")
-        self.texto_comentarios.grid(column=1, row=5)
-        self.entrada_comentarios = Entry(self, textvariable=self.comentarios)
-        self.entrada_comentarios.grid(column=2, row=5, columnspan=2)
+        self.texto_comentarios.grid(column=0, row=5)
+        self.entrada_comentarios = Text(self, width=20, height=10)
+        self.entrada_comentarios.grid(column=1, row=5, columnspan=2)
+        self.scrollVert = Scrollbar(self, command=self.entrada_comentarios.yview())
+        self.scrollVert.grid(column=2, row=5, sticky="nsew")
+
+        self.entrada_comentarios.config(yscrollcommand=self.scrollVert)
+
