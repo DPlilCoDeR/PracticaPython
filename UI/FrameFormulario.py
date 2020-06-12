@@ -1,38 +1,40 @@
 from tkinter import *
 from tkinter.ttk import *
+from .FrameCrud import FrameCrud
 
 
 class FrameFormulario(Frame):
 
-    def __init__(self, master=None):
+    def __init__(self, controller, master=None):
         super().__init__(master)
-        self.user_id = IntVar()
-        self.nombre = StringVar()
-        self.apellido = StringVar()
-        self.password = StringVar()
-        self.comentarios = StringVar()
+        self.controller = controller
         self.widget_formulario()
+        self.widget_crud = FrameCrud(self.controller)
         self.pack()
 
     def widget_formulario(self):
         self.texto_ID = Label(self, text="ID: ")
         self.texto_ID.grid(column=0, row=1)
-        self.entrada_ID = Entry(self, textvariable=self.user_id)
+        self.id_variable = IntVar()
+        self.entrada_ID = Entry(self, textvariable=self.id_variable)
         self.entrada_ID.grid(column=1, row=1, columnspan=2)
 
         self.texto_nombre = Label(self, text="Nombre: ")
         self.texto_nombre.grid(column=0, row=2)
-        self.entrada_nombre = Entry(self, textvariable=self.nombre)
+        self.nombre_variable = StringVar()
+        self.entrada_nombre = Entry(self, textvariable=self.nombre_variable)
         self.entrada_nombre.grid(column=1, row=2, columnspan=2)
 
         self.texto_apellido = Label(self, text="Apellido: ")
         self.texto_apellido.grid(column=0, row=3)
-        self.entrada_apellido = Entry(self, textvariable=self.apellido)
+        self.apellido_variable = StringVar()
+        self.entrada_apellido = Entry(self, textvariable=self.apellido_variable)
         self.entrada_apellido.grid(column=1, row=3, columnspan=2)
 
         self.texto_password = Label(self, text="Password: ")
         self.texto_password.grid(column=0, row=4)
-        self.entrada_password = Entry(self, textvariable=self.password)
+        self.password_variable = StringVar()
+        self.entrada_password = Entry(self, textvariable=self.password_variable)
         self.entrada_password.config(show="*")
         self.entrada_password.grid(column=1, row=4, columnspan=2)
 
@@ -40,8 +42,3 @@ class FrameFormulario(Frame):
         self.texto_comentarios.grid(column=0, row=5)
         self.entrada_comentarios = Text(self, width=20, height=10)
         self.entrada_comentarios.grid(column=1, row=5, columnspan=2)
-        self.scrollVert = Scrollbar(self, command=self.entrada_comentarios.yview())
-        self.scrollVert.grid(column=2, row=5, sticky="nsew")
-
-        self.entrada_comentarios.config(yscrollcommand=self.scrollVert)
-
