@@ -13,9 +13,13 @@ class Controller:
         self.view = FrameFormulario(self)
         self.menu = MenuBar(self.root, self)
 
+        self.user_id = self.view.id_variable.get()
+        self.name = self.view.nombre_variable.get()
+        self.last_name = self.view.apellido_variable.get()
+        self.password = self.view.password_variable.get()
+
         self.root.config(menu=self.menu)
         self.root.mainloop()
-
 
     def borrar_campos(self):
         self.view.id_variable.set("")
@@ -23,29 +27,15 @@ class Controller:
         self.view.apellido_variable.set("")
         self.view.password_variable.set("")
 
-    def show_items(self, bullet_points=False):
-        items = self.model.read_items()
-        item_type = self.model.item_type
-        if bullet_points:
-            self.view.show_bullet_point_list(item_type, items)
-        else:
-            self.view.show_number_point_list(item_type, items)
+    def show_item(self, user_id):
 
-    def show_item(self, item_name):
-        try:
-            item = self.model.read_item(item_name)
-            item_type = self.model.item_type
-            self.view.show_item(item_type, item_name, item)
-        except mvc_exc.ItemNotStored as e:
-            self.view.display_missing_item_error(item_name, e)
+        user = self.model.read_item(user_id)
+        self.view.nombre_variable.set(user)
 
-    def insert_item(self, name, price, quantity):
-        assert price > 0, 'price must be greater than 0'
-        assert quantity >= 0, 'quantity must be greater than or equal to 0'
+    def insert_item(self, name, last_name, password, comments=None):
         item_type = self.model.item_type
         try:
-            self.model.create_item(name, price, quantity)
-            self.view.display_item_stored(name, item_type)
+            self.model.create_item(name, last_name, password, comments)
         except mvc_exc.ItemAlreadyStored as e:
             self.view.display_item_already_stored_error(name, item_type, e)
 
