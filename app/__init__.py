@@ -1,7 +1,5 @@
-from app.Application import *
-from data.Basedatos import *
+from app.Controller import Controller
+
 
 if __name__ == "__main__":
-    base_datos = BaseDatos()
-    ui = Application(base_datos)
-    ui.mainloop()
+    app = Controller()
