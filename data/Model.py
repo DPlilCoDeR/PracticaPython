@@ -26,8 +26,11 @@ class Model(object):
         return usuario
 
     def update_item(self, user_id, name, last_name, password, comments):
-        update_one(
-            self.connection, user_id, name, last_name, password, comments, self.item_type)
+        new_datos =[name, last_name, password, comments, user_id]
+        self.miCursor.execute("UPDATE Usuario SET NAME=?, LAST_NAME=?, PASSWORD=?, COMMENTS=? WHERE USER_ID=?", new_datos)
+
+        self.connection.commit()
+        print('Update Exitoso')
 
     def delete_item(self, user_id):
         delete_one(self.connection, user_id, self.item_type)
