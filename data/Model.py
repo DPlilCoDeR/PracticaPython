@@ -1,27 +1,29 @@
-from data.subModel import *
+import sqlite3
 
 class Model(object):
 
     def __init__(self):
-        self._item_type = 'Usuario'
-        self._connection = connect_to_bbdd(ddbb_name)
-        create_table(self.connection, self.item_type)
+        self.ddbb_name = "prueba_bbdd2.db"
+        self._connection = sqlite3.connect(self.ddbb_name)
+        self.miCursor = self._connection.cursor()
+
 
     @property
     def connection(self):
         return self._connection
 
-    @property
-    def item_type(self):
-        return self._item_type
 
     def create_item(self, name, last_name, password, comments):
-        insert_one(
-            self.connection, name, last_name, password, comments, self.item_type)
+        datos = [name, last_name, password, comments]
+        self.miCursor.execute("INSERT INTO Usuario VALUES(NULL,?,?,?,?)", (datos))
+
+        self.connection.commit()
+        print("Guardado con exito")
 
     def read_item(self, user_id):
-        select_one(
-            self.connection, user_id, self.item_type)
+        self.miCursor.execute("SELECT * FROM Usuario WHERE USER_ID=?", user_id)
+        usuario = self.miCursor.fetchall()
+        return usuario
 
     def update_item(self, user_id, name, last_name, password, comments):
         update_one(
