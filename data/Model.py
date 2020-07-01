@@ -33,4 +33,7 @@ class Model(object):
         print('Update Exitoso')
 
     def delete_item(self, user_id):
-        delete_one(self.connection, user_id, self.item_type)
+        self.miCursor.execute("DELETE FROM Usuario WHERE USER_ID=?", user_id)
+
+        self.connection.commit()
+        print('DELETE exitoso')

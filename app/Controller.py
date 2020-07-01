@@ -21,14 +21,13 @@ class Controller:
         self.root.config(menu=self.menu)
         self.root.mainloop()
 
-    def delete_form(self):
+    def clean_form(self):
         self.view.id_variable.set("")
         self.view.nombre_variable.set("")
         self.view.apellido_variable.set("")
         self.view.password_variable.set("")
 
     def show_item(self, user_id):
-        print(user_id)
         user = self.model.read_item(user_id)
         for dato in user:
             self.view.nombre_variable.set(dato[1])
@@ -37,13 +36,12 @@ class Controller:
 
     def insert_item(self, name, last_name, password, comments=None):
         self.model.create_item(name, last_name, password, comments)
-        self.delete_form()
+        self.clean_form()
 
     def update_item(self, user_id, name, last_name, password, comments=None):
-
         self.model.update_item(user_id, name, last_name, password, comments)
-        self.delete_form()
+        self.clean_form()
 
-
-    def delete_item(self, name):
-        pass
+    def delete_item(self, user_id):
+        self.model.delete_item(user_id)
+        self.clean_form()
