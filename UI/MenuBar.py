@@ -13,6 +13,13 @@ class MenuBar(Menu):
         file_menu.add_command(label="Crear tabla", underline=1, command=lambda: self.controller.create_table())
         file_menu.add_command(label="Exit", command=self.quit)
 
+        crud_menu = Menu(self, tearoff=False)
+        self.add_cascade(label="Operaciones", menu=crud_menu)
+        crud_menu.add_command(label='Guardar', command=lambda: self.controller.insert_item())
+        crud_menu.add_command(label='Leer', command=lambda: self.controller.show_item())
+        crud_menu.add_command(label='Actualizar', command=lambda: self.controller.update_item())
+        crud_menu.add_command(label='Borrar', command=lambda: self.controller.delete_item())
+
         borrar_menu = Menu(self, tearoff=False)
         self.add_cascade(label="Borrar", menu=borrar_menu)
         borrar_menu.add_command(label="Borrar Campos", command=lambda: self.controller.clean_form())
