@@ -43,7 +43,7 @@ class FrameFormulario(Frame):
         self.entrada_comentarios.grid(column=1, row=5, columnspan=2)
 
     def buttons_crud(self):
-        self.boton_save = Button(self, text="Save", command=lambda: self.controller.insert_item(self.nombre_variable.get(), self.apellido_variable.get(), self.password_variable.get()))
+        self.boton_save = Button(self, text="Save", command=lambda: self.controller.insert_item())
         self.boton_save.grid(column=0, row=0)
 
         self.boton_read = Button(self, text="Read", command=lambda: self.controller.show_item())
