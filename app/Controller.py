@@ -3,6 +3,7 @@ from tkinter import *
 from data.Model import Model
 from UI.FrameFormulario import FrameFormulario
 from UI.MenuBar import MenuBar
+from UI.VentanasEmergentes import VentanasEmergentes
 
 
 class Controller:
@@ -21,11 +22,22 @@ class Controller:
         self.root.config(menu=self.menu)
         self.root.mainloop()
 
+    def create_table(self):
+        try:
+            self.model.create_table()
+        except Exception:
+            VentanasEmergentes.error_tabla()
+
     def clean_form(self):
         self.view.id_variable.set("")
         self.view.nombre_variable.set("")
         self.view.apellido_variable.set("")
         self.view.password_variable.set("")
+
+    def insert_item(self, name, last_name, password, comments=None):
+        self.model.create_item(name, last_name, password, comments)
+        self.clean_form()
+        VentanasEmergentes.guardado_exitoso()
 
     def show_item(self, user_id):
         user = self.model.read_item(user_id)
@@ -34,14 +46,12 @@ class Controller:
             self.view.apellido_variable.set(dato[2])
             self.view.password_variable.set(dato[3])
 
-    def insert_item(self, name, last_name, password, comments=None):
-        self.model.create_item(name, last_name, password, comments)
-        self.clean_form()
-
     def update_item(self, user_id, name, last_name, password, comments=None):
         self.model.update_item(user_id, name, last_name, password, comments)
         self.clean_form()
+        VentanasEmergentes.update_exitoso()
 
     def delete_item(self, user_id):
         self.model.delete_item(user_id)
         self.clean_form()
+        VentanasEmergentes.delete_exitoso()

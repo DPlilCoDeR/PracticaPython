@@ -10,12 +10,12 @@ class MenuBar(Menu):
 
         file_menu = Menu(self, tearoff=False)
         self.add_cascade(label="BBDD", underline=0, menu=file_menu)
-        file_menu.add_command(label="Crear tabla", underline=1)
+        file_menu.add_command(label="Crear tabla", underline=1, command=lambda: self.controller.create_table())
         file_menu.add_command(label="Exit", command=self.quit)
 
         borrar_menu = Menu(self, tearoff=False)
         self.add_cascade(label="Borrar", menu=borrar_menu)
-        borrar_menu.add_command(label="Borrar Campos", command= lambda: self.controller.borrar_campos())
+        borrar_menu.add_command(label="Borrar Campos", command=lambda: self.controller.clean_form())
 
         ayuda_menu = Menu(self, tearoff=False)
         self.add_cascade(label="Ayuda", underline=0, menu=ayuda_menu)
