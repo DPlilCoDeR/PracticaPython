@@ -14,11 +14,6 @@ class Controller:
         self.view = FrameFormulario(self, self.root)
         self.menu = MenuBar(self.root, self)
 
-        self.user_id = self.view.id_variable.get()
-        self.name = self.view.nombre_variable.get()
-        self.last_name = self.view.apellido_variable.get()
-        self.password = self.view.password_variable.get()
-
         self.root.config(menu=self.menu)
         self.root.mainloop()
 
@@ -39,8 +34,8 @@ class Controller:
         self.clean_form()
         VentanasEmergentes.guardado_exitoso()
 
-    def show_item(self, user_id):
-        user = self.model.read_item(user_id)
+    def show_item(self):
+        user = self.model.read_item(self.view.id_variable.get())
         for dato in user:
             self.view.nombre_variable.set(dato[1])
             self.view.apellido_variable.set(dato[2])

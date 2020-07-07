@@ -46,7 +46,7 @@ class FrameFormulario(Frame):
         self.boton_save = Button(self, text="Save", command=lambda: self.controller.insert_item(self.nombre_variable.get(), self.apellido_variable.get(), self.password_variable.get()))
         self.boton_save.grid(column=0, row=0)
 
-        self.boton_read = Button(self, text="Read", command=lambda: self.controller.show_item(self.id_variable.get()))
+        self.boton_read = Button(self, text="Read", command=lambda: self.controller.show_item())
         self.boton_read.grid(column=1, row=0)
 
         self.boton_update = Button(self, text="Update", command=lambda: self.controller.update_item(self.id_variable.get(), self.nombre_variable.get(), self.apellido_variable.get(), self.password_variable.get()))
