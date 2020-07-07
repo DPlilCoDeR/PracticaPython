@@ -36,7 +36,7 @@ class Model(object):
 
     def read_item(self, user_id):
         self.cursor.execute("SELECT * FROM Usuario WHERE USER_ID=?", user_id)
-        usuario = self.miCursor.fetchall()
+        usuario = self.cursor.fetchall()
         return usuario
 
     def update_item(self, user_id, name, last_name, password, comments):
