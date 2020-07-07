@@ -1,5 +1,5 @@
-from gui.Gui import *
+from app.Controller import Controller
 
-root = Tk()
-app = Gui(master=root)
-app.mainloop()
+
+if __name__ == "__main__":
+    app = Controller()

@@ -2,12 +2,30 @@
   <dictionary name="doble_papi">
     <words>
       <w>apellido</w>
+      <w>atributos</w>
+      <w>ayuda</w>
+      <w>barra</w>
       <w>bbdd</w>
+      <w>borrar</w>
+      <w>boton</w>
+      <w>botones</w>
       <w>comentarios</w>
+      <w>conectar</w>
       <w>conexion</w>
+      <w>controlador</w>
+      <w>crear</w>
       <w>datos</w>
+      <w>emergentes</w>
+      <w>exitoso</w>
       <w>formulario</w>
+      <w>guiada</w>
+      <w>lista</w>
+      <w>menubar</w>
       <w>nombre</w>
+      <w>practica</w>
+      <w>usuario</w>
+      <w>usuarios</w>
+      <w>ventanas</w>
     </words>
   </dictionary>
 </component>
