@@ -52,7 +52,8 @@ class Controller:
         self.clean_form()
         VentanasEmergentes.update_exitoso()
 
-    def delete_item(self, user_id):
+    def delete_item(self):
+        user_id = self.view.id_variable.get()
         self.model.delete_item(user_id)
         self.clean_form()
         VentanasEmergentes.delete_exitoso()

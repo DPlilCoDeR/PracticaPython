@@ -35,7 +35,7 @@ class Model(object):
         print("Guardado con exito")
 
     def read_item(self, user_id):
-        self.cursor.execute("SELECT * FROM Usuario WHERE USER_ID=?", user_id)
+        self.cursor.execute("SELECT * FROM Usuario WHERE USER_ID=?", [user_id])
         usuario = self.cursor.fetchall()
         return usuario
 
@@ -47,7 +47,7 @@ class Model(object):
         print('Update Exitoso')
 
     def delete_item(self, user_id):
-        self.cursor.execute("DELETE FROM Usuario WHERE USER_ID=?", user_id)
+        self.cursor.execute("DELETE FROM Usuario WHERE USER_ID=?", [user_id])
 
         self.connection.commit()
         print('DELETE exitoso')

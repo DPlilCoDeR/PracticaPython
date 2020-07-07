@@ -52,5 +52,5 @@ class FrameFormulario(Frame):
         self.boton_update = Button(self, text="Update", command=lambda: self.controller.update_item())
         self.boton_update.grid(column=2, row=0)
 
-        self.boton_delete = Button(self, text="Delete", command=lambda: self.controller.delete_item(self.id_variable.get()))
+        self.boton_delete = Button(self, text="Delete", command=lambda: self.controller.delete_item())
         self.boton_delete.grid(column=3, row=0)
