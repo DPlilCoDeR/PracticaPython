@@ -35,14 +35,20 @@ class Controller:
         VentanasEmergentes.guardado_exitoso()
 
     def show_item(self):
-        user = self.model.read_item(self.view.id_variable.get())
+        user_id = self.view.id_variable.get()
+        user = self.model.read_item(user_id)
         for dato in user:
             self.view.nombre_variable.set(dato[1])
             self.view.apellido_variable.set(dato[2])
             self.view.password_variable.set(dato[3])
 
-    def update_item(self, user_id, name, last_name, password, comments=None):
-        self.model.update_item(user_id, name, last_name, password, comments)
+    def update_item(self):
+        user_id = self.view.id_variable.get()
+        name = self.view.nombre_variable.get()
+        last_name = self.view.apellido_variable.get()
+        password = self.view.password_variable.get()
+
+        self.model.update_item(user_id, name, last_name, password, comments=None)
         self.clean_form()
         VentanasEmergentes.update_exitoso()
 
