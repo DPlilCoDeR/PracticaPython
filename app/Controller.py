@@ -28,13 +28,15 @@ class Controller:
         self.view.nombre_variable.set("")
         self.view.apellido_variable.set("")
         self.view.password_variable.set("")
+        self.view.entrada_comentarios.delete("1.0", END)
 
     def insert_item(self):
         name = self.view.nombre_variable.get()
         last_name = self.view.apellido_variable.get()
         password = self.view.password_variable.get()
+        comments = self.view.entrada_comentarios.get("1.0", END)
 
-        self.model.create_item(name, last_name, password, comments=None)
+        self.model.create_item(name, last_name, password, comments)
         self.clean_form()
         VentanasEmergentes.guardado_exitoso()
 
